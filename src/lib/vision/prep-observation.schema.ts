@@ -12,10 +12,17 @@ import { z } from "zod";
  * PASS / FAIL / UNCERTAIN. Nothing in this file should imply pass or fail.
  */
 
-/** Whether a feature or mark can be seen in the available images. */
+/**
+ * Visibility of a feature or mark in the supplied images:
+ * - VISIBLE: The feature is visually detected in the supplied evidence.
+ * - NOT_DETECTED: The feature was not detected in the supplied images.
+ *   This MUST NOT mean the feature does not exist on the physical product.
+ * - UNCERTAIN: The supplied visual evidence is insufficient to reliably determine
+ *   whether the feature is present or absent.
+ */
 export const visibilitySchema = z.enum([
   "VISIBLE",
-  "NOT_VISIBLE",
+  "NOT_DETECTED",
   "UNCERTAIN",
 ]);
 
